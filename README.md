@@ -1,0 +1,2 @@
+# weibin.com
+blog
