@@ -4,7 +4,7 @@ title: "Weibin QU| 瞿伟斌"
 theme: "hugo-ivy"
 relativeurls: true
 googleAnalytics: ""
-disqusShortname: ""
+disqusShortname: "weibin"
 ignoreFiles: ["\\.Rmd$", "_files$", "_cache$"]
 hasCJKLanguage: true
 enableEmoji: true
@@ -59,6 +59,7 @@ menu:
 
 params:
     description: "A Blog of WeiBin Qu."
+    disqusURL: "http://weibinqu.xyz"
     footer : "&copy; [Weibin Qu](https://weibinqu.xyz) 2017 | [Github](https://github.com/weibinfighting) | [Weibo](https://weibo.com/p/1005055533220082/home?from=page_100505&mod=TAB#place)"
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion : "9.12.0"
