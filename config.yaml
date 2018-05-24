@@ -44,7 +44,7 @@ menu:
       weight: 4
   cn:
     - name: "首页"
-      url: "/"
+      url: "/cn/about/"
       weight: 1
     - name: "关于"
       url: "/cn/about/"
