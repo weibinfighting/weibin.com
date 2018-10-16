@@ -1,7 +1,7 @@
 baseurl: "https://weibinqu.xyz"
 languageCode: "en-us"
 title: "Weibin QU| 瞿伟斌"
-theme: "hugo-ivy"
+theme: "simple-a"
 relativeurls: true
 googleAnalytics: ""
 disqusShortname: "weibin"
