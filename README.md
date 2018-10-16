@@ -1,2 +1,2 @@
 # weibin.com
-blog
+This is my blog
