@@ -625,10 +625,7 @@ var_secerror = function(x,y=NULL,alpha=0.05,beta=0.1,
       c_1_c_2 = (m-1)*n*qf(1-alpha,m-1,n-1)/(n-1)/m
       P = pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_1_c_2,m-1,n-1)
       result = cat(&quot;犯第二类错误的概率为:P=&quot;,P,&quot;\n&quot;)
-      return(result)
-    }
-  }
-}</code></pre>
+      return(result)}}}</code></pre>
 <p>#参考文献</p>
 <p>[1]《数理统计学简史》.陈希孺.湖南教育出版社.2002年</p>
 <p>[2]《概率论与数理统计教程》. 茆诗松.程依明.濮晓龙.高等教育出版社.2011年</p>
