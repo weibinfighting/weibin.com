@@ -1,0 +1,948 @@
+---
+title: 假设检验中“取伪”错误的概率计算
+author: Weibin
+date: '2018-10-16'
+slug: type-2-error
+categories:
+  - 统计
+---
+
+#一、文献综述
+
+##1.假设检验的提出与发展
+&emsp;&emsp;假设检验是将具体的事件转变为抽象的数学语言，是一种有重要应用价值的统计推断形式。
+1900年由卡尔·皮尔逊(K.Pearson)提出来的拟合优度$\chi^2$检验，主要用于估量数据与模型拟合的程度如何，并由此奠定了假设检验的思想基础。
+20世纪20年代费歇尔(R.A.Fisher)提出的显著性检验对其进行了细化。
+最终由奈曼(J.Neyman)和艾·皮尔逊(E.S.Pearson)提出了较为完整的假设检验理论。
+Neyman-Pearson关于假设检验的理论（NP理论），是建立在概率的频率解释基础之上的、关于假设检验的一套形式比较完美的数学理论。
+但NP理论不是另起炉灶，而是对Pearson和Fisher的工作的继承和发展。
+
+##2.Pearson的思想，拟合优度检验
+
+&emsp;&emsp;为了更好地估量拟合程度如何，K.Pearson提出了拟合优度检验：
+
+&emsp;&emsp;先设$X$只取有限个不同的值$a_1,\ldots,a_r$。理论分布$F$（完全已知的情况下）集中在$a_i$点的概率记为$p_i$。检验假设：$$H:P(X=a_i)=p_i(i=1,\ldots,r)$$
+其中，$p_i>0$已知，$\sum_{i=1}^rp_i=1$。
+
+&emsp;&emsp;以$\nu_i$记$X_1,\ldots,X_n$中等于$a_i$的个数，$\nu_i$称为$a_i$的观察频数。
+有$\sum_{i=1}^r\nu_i=n$。$np_i$称为$a_i$的理论频数，意即当$X$的分布确为$F$时，$\nu_i$"在理论上"应取的值。
+K.Pearson引进Pearson$\chi^2$统计量，以反映样本与理论分布的偏离：$$k=k(X_1,\ldots,X_n;F)=\sum_{i=1}^r\frac{(\nu_i-np_i)^2}{np_i}$$
+
+&emsp;&emsp;K.Pearson在给出$\chi^2$统计量的同时，证明了一个**极限定理**：若假设$H$为真，则当样本大小$n\to\infty$时，统计量$k$的均匀分布收敛于$\chi_{r-1}^2$，即自由度为$r-1$的$\chi^2$分布。
+
+&emsp;&emsp;由此可近似算出概率$P(k \geq k_0)$。这个数称为拟合优度。因为这个数愈大，则产生像$k_0$这么大或更大的偏离机会愈多，因而实际得到$k_0$这么大偏离这件事并不稀奇。
+一般地，会先给定一个值$\alpha$(如0.01,0.05等)，从$\chi^2$分布表上查出满足条件
+$P(\chi_{r-1}^2 \geq \chi_{r-1}^2(\alpha))=\alpha$的值$\chi_{r-1}^2(\alpha)$，然后视$k_0>\chi_{r-1}^2(\alpha)$或否，决定否定或接受$H$.这就是Pearson的拟合优度检验。
+
+&emsp;&emsp;如果我们需要通过实践去检验一个理论、假说等，只要能设计一种观察或试验，使其结果$X$当理论或假设成立时有确定的分布$F$，则关于该假设是否正确的问题可以转化为检验假设（a），其中$X_1,\ldots,X_n$是$X$的独立观察值。
+检验方法可用Pearson $\chi^2$检验法，也可以用种种不同的方法定义$X_1,\ldots,X_n$与$F$之间的偏离，从而引出种种不同的检验法。
+这些都可以称为拟合优度检验。由K.Pearson开创的这个方向上的工作，是假设检验的一个重要组成部分。
+
+##3.Fisher的思想，显著性检验
+&emsp;&emsp;1919年，Fisher进入Rothamsted农业试验站，从事统计学和遗传学方面的研究工作。他在其著作《The Design of Experiments》中提出了显著性检验。
+Fisher通过提出著名的女士饮茶问题说明了他的观点：
+
+&emsp;&emsp;奶茶由牛奶与茶按一定比例混合而成，一位女士声称，她可以分辨出一杯奶茶是先倒茶后加奶（TM）还是先加奶后倒茶（MT）。设计如下试验，来检验她的说法是否可信。
+准备8杯饮料，TM和MT各半，把它们随机排成一列，让该女士一次品尝，并告诉她TM和MT各有4杯，然后请她指出哪4杯是TM，设她全说对了。
+
+&emsp;&emsp;Fisher的推理为：引进一个假设$H$:该女士并无鉴别能力。
+其意义为：当$H$正确时，不论该女士如何做，她事实上只能从8杯奶茶中随机选择4杯作为TM，共有$C_8^4=70$种，其中只有1种是全部挑对。
+因此，若该女士果真全部挑对，则我们必须承认，下述两种情况必有其一发生：
+*$H$不成立，即该女士确有一定的鉴别能力；
+*发生了一件其概率只有$\frac{1}70$的事件。
+第二种的情况显然比较稀奇，因而有相当的理由承认第一种情况的可能性。即该女士4杯全对这个结果是一个不利于假设$H$的显著的证据。据此，我们否定$H$。这样一种推断过程就称为显著性检验。
+
+&emsp;&emsp;根据这个例子，不难把Fisher显著性检验的思想归纳为几点：
+
+* 有一个明确的命题（假设）$H$。
+* 设计一个试验，观察某变量$X$.$X$要有这样的性质：当$H$成立时，$X$有已知分布。
+* 根据$H$和$X$的具体内容，对$X$的值排一个次序。使愈靠前的值，愈对$H$不利。
+* 以$x$记$X$的观察值。由已知分布把$x$和比$x$更靠前的值的概率之和求出来，暂记为$p_x$。$p_x$愈小，试验结果$x$愈不利于$H$。
+* 算出$P_x$后，根据事先给出的显著水平$\alpha$，当$p_x<\alpha$时否定$H$，当$p_x \geq \alpha$时接受$H$。
+
+##4.Neyman-Pearson理论
+&emsp;&emsp;在继承了K.Pearson和Fisher的思想之后，Neyman和E.S.Pearson提出了NP理论，建立了完整的假设检验理论。
+
+###（1）建立假设
+&emsp;&emsp;设有来自某个参数分布族$\{F(x,\theta)|\theta\in\Theta_0\}$的样本$x_1,\ldots,x_n$，其中$\Theta$为参数空间，
+设$\Theta_0\subset\Theta$，且$\Theta_0\neq\varnothing$，则命题$H_0:\theta\in\Theta_0$称为原假设或零假设（null hypothesis），若有另一个$\Theta_1(\Theta_1\subset\Theta,\Theta_0\cap\Theta_1=\varnothing)$，则命题$H_1:\theta\in\Theta_1$称为$H_0$的备择假设（alternative hypothesis）。
+于是就有了一对假设：$$H_0:\theta\in\Theta_0 vs H_1:\theta\in\Theta_1$$
+&emsp;&emsp;如果$\Theta_0$中只含一点，则可以将原假设写成$H_0:\theta=\theta_0$。此时备择假设通常有三种可能：$$H_1':\theta\neq\theta_0,H_1'':\theta<\theta_0,H_1''':\theta>\theta_0$$
+我们称$H_0 vs H_1':\theta\neq\theta_0$为双侧假设或双边假设，$H_0 vs H_1'':\theta<\theta_0$以及$H_0 vs H_1''':\theta>\theta_0$为单侧假设或单边假设。
+
+###（2）选择检验统计量，给出拒绝形式
+&emsp;&emsp;由样本对原假设进行检验总是通过一个统计量完成的，该统计量称为检验统计量。
+
+&emsp;&emsp;当有了样本之后，按该法则就可以决定是接受$H_0$还是拒绝$H_0$，即检验就等价于把样本空间划分为两个互不相交的部分$W$和$\overline{W}$，
+当样本属于$W$时，拒绝$H_0$；否则接受$H_0$。于是我们把$W$称为拒绝域，而$\overline{W}$称为接受域。当拒绝域确定了之后，检验的判断准则也随之确定：
+
+* 如果$(x_1,\ldots,x_n)\in{W}$，则拒绝$H_0$。
+* 如果$(x_1,\ldots,x_n)\in\overline{W}$，接受$H_0$。
+
+###（3）两类错误
+&emsp;&emsp;由于样本是随机的，故当我们应用某种检验做判断时，我们可能作出正确的判断，也可能做出错误的判断。
+因此，我们可能犯下两种错误：
+
+* 当$\theta\in\Theta_0$时，样本由于随机性却落入拒绝域$W$，于是我们采取了拒绝$H_0$的错误决策，我们称这样的错误为第一类错误（type $\uppercase\expandafter{\romannumeral1}$ error）;
+* 当$\theta\in\Theta_1$时，样本却落入了接受域$\overline{W}$，于是我们采取了接受$H_0$的错误决策，我们称这样的错误为第二类错误（type $\uppercase\expandafter{\romannumeral2}$ error）。
+
+&emsp;&emsp;在实际中，我们分别称第一类、第二类错误为弃真错误与取伪错误。我们定义犯第一类、第二类错误概率如下：
+
+* 犯第一类错误概率：$\alpha=P_\theta\{X\in{W}\},\theta\in\Theta_0$，也记为$P\{X\in{W}|H_0\}$。
+* 犯第二类错误概率：$\beta=P_\theta\{X\in\overline{W}\},\theta\in\Theta_1$，也记为$P\{X\in\overline{W}|H_1\}$。
+
+###（4）势函数（power function）
+&emsp;&emsp;一个检验的势函数为该检验样本观测值$X$落入拒绝域$W$内的概率，记为：$$g(\theta)=P_0(X\in{W}, \theta\in\Theta=\Theta_0\cup\Theta_1.$$
+所以当$\theta\in\Theta_0$时，$g(\theta)=\alpha=\alpha(\theta)$，当$\theta\in\Theta_1$时$g(\theta)=1-\beta(\theta)$。因此可见，犯两类错误的概率都是参数$\theta$的函数，
+并可由势函数得到，即：$$g(\theta) = \left\{ \begin{array}{ll}\alpha(\theta),&\theta\in\Theta_0,\\1-\beta(\theta),&\theta\in\Theta_1,\end{array}\right.$$
+
+&emsp;&emsp;我们可以设一个检验以了解第一类、第二类错误概率的关系。设拒绝域$W=\{\overline{x}\leq{c}\},\overline{x}\sim{N}(\theta,\sigma^2)$，则可以算出该检验的势函数
+$$g(\theta)=P_\theta(\frac{\overline{x}-\theta}\sigma\leq\frac{c-\theta}\sigma)=\Phi(\frac{c-\theta}\sigma)$$
+利用这个势函数容易写出其犯两类错误的概率分别为：
+$$\alpha(\theta)=\Phi(\frac{c-\theta}\sigma),\theta\in\Theta_0,$$$$\beta(\theta)=1-\Phi(\frac{c-\theta}\sigma),\theta\in\Theta_1.$$
+由上式可以看出犯两类错误的概率$\alpha,\beta$间的关系：
+
+* 当$\alpha$减小时，c减小，$\beta$必增大。
+* 当$\beta$减小时，c增大，$\alpha$必增大。
+
+&emsp;&emsp;这说明在样本量一定的条件下不可能找到一个使$\alpha,\beta$都小的检验。
+因为无法同时控制检验犯第一类、第二类错误的概率，所以只能采取这种方案，费歇尔提出的显著性检验就仅限制犯第一类错误的概率。
+
+&emsp;&emsp;对检验问题$H_0:\theta\in\Theta_0 vs H_1:\theta\in\Theta_1$，如果一个检验满足对任意的$\theta\in\Theta_0$，都有$$g(\theta)\leq\alpha,$$
+则称该检验是显著性水平为$\alpha$的显著性检验，简称水平为$\alpha$的检验。
+
+#二、第二类错误计算
+##1.单个正态总体均值检验
+&emsp;&emsp;设$x_1,\ldots,x_n$是来自$N(\mu,\sigma^2)$的样本，总共有如下三种关于$\mu$的检验问题：
+
+* $H_0:\mu\leq\mu_0 vs H_1:\mu>\mu_0,$
+* $H_0:\mu\geq\mu_0 vs H_1:\mu<\mu_0,$
+* $H_0:\mu=\mu_0 vs H_1:\mu\neq\mu_0.$
+
+&emsp;&emsp;其中$\mu_0$是已知常数。由于正态总体含两个参数，总体方差$\sigma^2$已知与否对检验有影响。
+由NP理论，我们如果想要计算假设检验犯第二类错误的概率，我们需要先计算出检验的拒绝域与接受域。根据接受域以及均值计算出检验犯第二类错误的概率。
+下面我们分两种情况讨论在方差是否已知的情况下，在已知显著性条件$\alpha$下，检验犯第二类错误的概率，以及在限定犯第二类错误概率的情况下保持显著性条件下所需要的样本量。
+
+###（1）$\sigma$已知时的$Z$检验
+&emsp;&emsp;根据NP理论，在已知$\sigma$时，由于$\mu$的点估计是$\overline{x}$，且$\overline{x}\sim{N}(\mu,\sigma^2/n)$，所以我们选用检验统计量：
+$$Z=\frac{\overline{x}-\mu_0}{\sigma/\sqrt{n}}$$
+当样本均值$\overline{x}$不超过设定均值$\mu_0$时，应倾向于接受原假设；当样本均值$\overline{x}$超过$\mu_0$时，应倾向于拒绝原假设。
+可是，在有随机性存在的场合，如果$\overline{x}$比$\mu_0$大一点就拒绝原假设似乎不当，
+只有当$\overline{x}$比$\mu_0$差距大到一定程度时拒绝原假设才是恰当的，这就存在一个临界值$c$。设要求显著水平为$\alpha$。
+
+####1）$H_1:\mu\neq\mu_0$
+拒绝域与接受域分别为：
+$$W_1=\{(x_1,\ldots,x_n):|\overline{x}-\mu_0|\geq{c}\},$$
+$$\overline{W_1}=\{(x_1,\ldots,x_n):|\overline{x}-\mu_0|\leq{c}\}.$$
+则$c$满足：
+$$P_{\mu_0}(|Z|\geq\frac{c}{\sigma/\sqrt{n}})=\alpha$$
+因为在原假设成立时，$Z\sim{N}(0,1)$，所以
+$$c=\frac{\sigma Z_{1-\alpha/2}}{\sqrt{n}}$$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1)=\Phi(\frac{c+\mu_0-\mu_1}{\sigma/\sqrt{n}}) - \Phi(\frac{-c+\mu_0-\mu_1}{\sigma/\sqrt{n}})$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+####2）$H_1:\mu>\mu_0$
+拒绝域与接受域分别为：
+$$W_1=\{(x_1,\ldots,x_n):\overline{x}\geq{c}\},$$
+$$\overline{W_1}=\{(x_1,\ldots,x_n):\overline{x}\leq{c}\}.$$
+则$c$满足：
+$$P_{\mu_0}(Z\geq\frac{c-\mu_0}{\sigma/\sqrt{n}})=\alpha$$
+因为在原假设成立时，$Z\sim{N}(0,1)$，所以
+$$c=\frac{\sigma{Z_{1-\alpha}}}{\sqrt{n}}+\mu_0$$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1)=\Phi(\frac{c-\mu_1}{\sigma/\sqrt{n}})$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率$\beta$后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+$$n\geq\frac{\sigma^2(Z_\beta-Z_{1-\alpha})^2}{(\mu_0-\mu_1)^2}$$
+
+####3）$H_1:\mu<\mu_0$
+拒绝域与接受域分别为：
+$$W_1=\{(x_1,\ldots,x_n):\overline{x}\leq{c}\},$$
+$$\overline{W_1}=\{(x_1,\ldots,x_n):\overline{x}\geq{c}\}.$$
+则$c$满足：
+$$P_{\mu_0}(Z\leq\frac{c-\mu_0}{\sigma/\sqrt{n}})=\alpha$$
+因为在原假设成立时，$Z\sim{N}(0,1)$，所以
+$$c=\frac{\sigma{Z_\alpha}}{\sqrt{n}}+\mu_0$$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1)=1-\Phi(\frac{c-\mu_1}{\sigma/\sqrt{n}})$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率$\beta$后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+$$n\geq\frac{\sigma^2(Z_\beta+Z_\alpha)^2}{(\mu_1-\mu_0)^2}$$
+
+###（2）$\sigma$未知时的$t$检验
+&emsp;&emsp;由于$\sigma$未知，我们选择使用$\sigma$的无偏估计样本的标准差$s$来替换$\sigma$，这就有了$t$检验统计量：
+$$t=\frac{\sqrt{n}(\overline{x}-\mu_0)}s.$$
+设要求显著水平为$\alpha$，临界值为$c$。
+
+####1）$H_1:\mu\neq\mu_0$
+&emsp;&emsp;在$\mu=\mu_0$时$t\sim t(n-1)$，从而检验$H_1:\mu\neq\mu_0$的拒绝域为：
+$$W_1=\{(x_1,\ldots,x_n):|\overline{x}-\mu_0|\geq{c}\},$$
+$$\overline{W_1}=\{(x_1,\ldots,x_n):|\overline{x}-\mu_0|\leq{c}\}.$$
+则$c$满足：
+$$P_{\mu_0}(|t|\geq\frac{c}{s/\sqrt{n}})=\alpha$$
+因为在原假设成立时，$t\sim t(n-1)$，所以
+$$c=\frac{s t_{1-\alpha/2}(n-1)}{\sqrt{n}}$$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1)=t_{n-1}(\frac{c+\mu_0-\mu_1}{s/\sqrt{n}})-t_{n-1}(\frac{-c+\mu_0-\mu_1}{s/\sqrt{n}}).$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率后，我们可以由上式求得犯第二类错概率的最小样本量$n$。
+
+####2）$H_1:\mu>\mu_0$
+&emsp;&emsp;在$\mu=\mu_0$时$t\sim t(n-1)$，从而检验$H_1:\mu>\mu_0$的拒绝域为：
+$$W=\{t\geq t_{1-\alpha}(n-1)\}$$
+$$\overline{W}=\{t<t_{1-\alpha}(n-1)\}$$
+所以$c=\frac{s t_{1-\alpha}(n-1)}{\sqrt{n}}+\mu_0$
+再根据检验的势函数即可求得犯第二类错误的概率为：
+$$\beta(\mu_1)=t_{n-1}(\frac{c-\mu_1}{s/\sqrt{n}})$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+####3）$H_1:\mu<\mu_0$
+&emsp;&emsp;在$\mu=\mu_0$时$t\sim t(n-1)$，从而检验$H_1:\mu<\mu_0$的拒绝域为：
+$$W=\{t\leq t_\alpha(n-1)\}$$
+$$\overline{W}=\{t>t_\alpha(n-1)\}$$
+所以$c=\frac{s t_\alpha(n-1)}{\sqrt{n}}+\mu_0$
+再根据检验的势函数即可求得犯第二类错误的概率为：
+$$\beta(\mu_1)=1-t_{n-1}(\frac{c-\mu_1}{s/\sqrt{n}})$$
+由此，当给定样本均值，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+##2.两个正态总体均值差的检验
+&emsp;&emsp;设$x_1,\ldots,x_m$是来自正态总体$N(\mu_1,\sigma_1^2)$的样本，$y_1,\ldots,y_n$是来自另一个正态总体$N(\mu_2,\sigma_2^2)$的样本，两个样本相互独立。
+设原假设为$H_0:\mu_1=\mu_2$下面对常见的两种情况进行讨论。
+
+###（1）$\sigma_1,\sigma_2$已知时的两样本$Z$检验
+&emsp;&emsp;此时$\mu_1-\mu_2$的点估计$\overline{x}-\overline{y}$的分布完全已知，
+$$\overline{x}-\overline{y}\sim{N}(\mu_1-\mu_2,\frac{\sigma_1^2}{m}+\frac{\sigma_2^2}{n}).$$
+由此可采用$Z$检验的方法，构造检验统计量为：
+$$Z=(\overline{x}-\overline{y})/\sqrt{\frac{\sigma_1^2}m+\frac{\sigma_2^2}n}.$$
+在原假设成立时，有$Z\sim{N}(0,1)$。检验的拒绝域则取决于备择假设的具体内容。
+下面根据备择假设的不同分情况讨论。
+
+####1）$H_1:\mu_1\neq\mu_2$
+&emsp;&emsp;对于该检验，检验的拒绝域与接受域分别为：
+$$W=\{|\overline{x}-\overline{y}|\geq c\}$$
+$$\overline{W}=\{|\overline{x}-\overline{y}|\leq c\}$$
+则$c$满足：
+$$P_0(|Z|\geq\frac{c}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})=\alpha$$
+所以$c=Z_{1-\alpha/2}\sqrt{\frac{\sigma_1^2}m+\frac{\sigma_2^2}n}$
+再根据势函数即可求得犯第二类错误的概率为：
+$$\beta(\mu_1-\mu_2\neq 0)=\Phi(\frac{c-\mu_1+\mu_2}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})-\Phi(\frac{-c-\mu_1+\mu_2}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})$$
+
+####2）$H_1:\mu_1>\mu_2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{\overline{x}-\overline{y}\geq{c}\},$$
+$$\overline{W}=\{\overline{x}-\overline{y}\leq{c}\}.$$
+则$c$满足：
+$$P_0(Z\geq\frac{c}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})=\alpha$$
+所以$c=Z_{1-\alpha}\sqrt{\sigma_1^2/m+\sigma_2^2/n}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1>\mu_2)=\Phi(\frac{c-\mu_1+\mu_2}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})$$
+
+####3）$H_1:\mu_1<\mu_2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{\overline{x}-\overline{y}\leq{c}\},$$
+$$\overline{W}=\{\overline{x}-\overline{y}\geq{c}\}.$$
+则$c$满足：
+$$P_0(Z\leq\frac{c}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})=\alpha$$
+所以$c=Z_\alpha\sqrt{\sigma_1^2/m+\sigma_2^2/n}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率为：
+$$\beta(\mu_1<\mu_2)=1-\Phi(\frac{c-\mu_1+\mu_2}{\sqrt{\sigma_1^2/m+\sigma_2^2/n}})$$
+
+###（2）$\sigma_1=\sigma_2=\sigma$未知时的两样本$t$检验
+&emsp;&emsp;在$\sigma_1^2=\sigma_2^2=\sigma^2$但未知时，首先$\overline{x}-\overline{y}\sim N(\mu_1-\mu_2,(\frac{1}m+\frac{1}n)\sigma^2)$，其次，由于
+$$\frac{1}{\sigma^2}\sum_{i=1}^m(x_i-\overline{x})^2\sim \chi^2(m-1),\frac{1}{\sigma^2}\sum_{i=1}^n(y_i-\overline{y})^2\sim \chi^2(n-1)).$$
+故$\frac{1}{\sigma^2}(\sum{(x_i-\overline{x})^2}+\sum{(y_i-\overline{y})^2})\sim \chi^2(m+n-2)$，记
+$$s_w^2=\frac{1}{m+n-2}[\sum_{i=1}^m(x_i-\overline{x})^2+\sum_{i=1}^n(y_i-\overline{y})^2].$$
+于是有：
+$$t=\frac{(\overline{x}-\overline{y})-(\mu_1-\mu_2)}{s_w\sqrt{\frac{1}m+\frac{1}n}}\sim t(m+n-2)$$
+构造$t$统计量：
+$$t=\frac{\overline{x}-\overline{y}}{s_w\sqrt{\frac{1}m+\frac{1}n}}.$$
+设显著性要求为$\alpha$，临界值为$c$。下面根据备择假设的不同，分类讨论。
+
+####1）$H_1:\mu_1\neq\mu_2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{|\mu_1-\mu_2|\geq{c}\}$$
+$$\overline{W}=\{|\mu_1-\mu_2|\leq{c}\}$$
+则$c$满足
+$$P_0(|t|\geq\frac{c}{s_w\sqrt{\frac{1}m+\frac{1}n}})=\alpha$$
+所以$c=s_w\sqrt{\frac{1}m+\frac{1}n}t_{1-\alpha/2(m+n-2)}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\mu_1\neq\mu_2)=t_{m+n-2}(\frac{c-\mu_1+\mu_2}{s_w\sqrt{\frac{1}m+\frac{1}n}})-t_{m+n-2}(\frac{-c-\mu_1+\mu_2}{s_w\sqrt{\frac{1}m+\frac{1}n}})$$
+
+####2）$H_1:\mu_1>\mu_2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{t\geq t_{1-\alpha}(m+n-2)\},$$
+$$\overline{W}=\{t\leq t_{1-\alpha}(m+n-2)\}.$$
+所以$c=s_w\sqrt{\frac{1}m+\frac{1}n}t_{1-\alpha}(m+n-2)$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\mu_1>\mu_2)=t_{m+n-2}(\frac{c-\mu_1+\mu_2}{s_w\sqrt{\frac{1}m+\frac{1}n}})$$
+
+####3）$H_1:\mu_1<\mu_2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{t\leq t_{1-\alpha}(m+n-2)\},$$
+$$\overline{W}=\{t\geq t_{1-\alpha}(m+n-2)\}.$$
+所以$c=s_w\sqrt{\frac{1}m+\frac{1}n}t_\alpha(m+n-2)$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\mu_1<\mu_2)=1-t_{m+n-2}(\frac{c-\mu_1+\mu_2}{s_w\sqrt{\frac{1}m+\frac{1}n}})$$
+
+##3.正态总体方差的检验
+
+###（1）单个正态总体方差的$\chi^2$检验
+&emsp;&emsp;设$x_1,\ldots,x_n$是来自$N(\mu,\sigma^2)$的样本，在这里我们采用$\chi^2$检验统计量：
+$$\chi^2=(n-1)s^2/\sigma_0^2$$
+当原假设$H_0:\sigma^2=\sigma_0^2$时，有$\chi^2\sim\chi^2(n-1)$，于是若取显性水平为$\alpha$，临界值为$c,c_1,c_2$。下面根据备择假设的不同，分类讨论。
+
+####1）$H_1:\sigma^2\neq\sigma_0^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{\chi^2\leq\chi_{\alpha/2}^2(n-1)or\chi^2\geq\chi_{1-\alpha/2}^2(n-1)\}$$
+$$\overline{W}=\{\chi_{\alpha/2}^2(n-1)\leq\chi^2\leq\chi_{1-\alpha/2}^2(n-1)\}$$
+则有$$P_0(\chi^2\leq\frac{nc_1^2}{\sigma_0^2})+P_0(\chi^2\geq\frac{nc_2^2}{\sigma_0^2})=\alpha$$
+所以$c_1^2=\frac{\sigma_0^2\chi_{\alpha/2}^2(n-1)}n,c_2^2=\frac{\sigma_0^2\chi_{1-\alpha/2}^2(n-1)}n$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma^2\neq\sigma_0^2)=\chi_{n-1}^2(\frac{nc_2^2}{\sigma_1^2})-\chi_{n-1}^2(\frac{nc_1^2}{\sigma_1^2})$$
+由此，当给定样本标准差，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+####2）$H_1:\sigma^2\geq\sigma_0^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{\chi^2\geq\chi_{1-\alpha}^2(n-1)\}$$
+$$\overline{W}=\{\chi^2\leq\chi_{1-\alpha}^2(n-1)\}$$
+则有$$P_0(\frac{(n-1)s^2}{\sigma_0^2}\geq\frac{nc^2}{\sigma_0^2})=\alpha$$
+所以$c^2=\frac{\sigma_0^2\chi_{1-\alpha}^2(n-1)}n$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma^2\geq\sigma_0^2)=\chi_{n-1}^2(\frac{nc^2}{\sigma_1^2})$$
+由此，当给定样本标准差，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+####3）$H_1:\sigma^2\leq\sigma_0^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{\chi^2\leq\chi_\alpha^2(n-1)\}$$
+$$\overline{W}=\{\chi^2\geq\chi_\alpha^2(n-1)\}$$
+则有$$P_0(\frac{(n-1)s^2}{\sigma_0^2}\leq\frac{nc^2}{\sigma_0^2})=\alpha$$
+所以$c^2=\frac{\sigma_0^2\chi_\alpha^2(n-1)}n$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma^2\leq\sigma_0^2)=1-\chi_{n-1}^2(\frac{nc^2}{\sigma_1^2})$$
+由此，当给定样本标准差，显著水平以及犯第二类错误的概率后，我们可以根据上式求得满足犯第二类错误概率的最小样本量$n$为多少。
+
+###（2）两个正态总体方差比的$F$检验
+&emsp;&emsp;设$x_1,\ldots,x_m$是来自$N(\mu_1,\sigma_1^2)$的样本，$y_1,\ldots,y_n$是来自$N(\mu_2,\sigma_2^2)$的样本。
+通常$\mu_1,\mu_2$均未知，记$s_x^2,s_y^2$分别是由$x_1,\ldots,x_m$算得的$\sigma_1^2$的无偏估计和由$y_1,\ldots,y_n$算得的$\sigma_2^2$的无偏估计（两个都是样本方差），则可建立如下检验统计量：
+$$F=\frac{s_x^2}{s_y^2}.$$
+当原假设$H_0:\sigma_1^2=\sigma_2^2$成立时，有$F\sim F(m-1,n-1)$，于是若取显性水平为$\alpha$，临界值为$c_1,c_2,c_1',c_2'$。下面根据备择假设的不同，分类讨论。
+
+####1）$H_1:\sigma_1^2\neq\sigma_2^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{F\leq F_{\alpha/2}(m-1,n-1)orF\geq F_{1-\alpha/2}(m-1,n-1)\}$$
+$$\overline{W}=\{F_{\alpha/2}(m-1,n-1)\leq F\leq F_{1-\alpha/2}(m-1,n-1)\}$$
+则有$$P_0(F\leq\frac{(n-1)mc_1^2}{(m-1)nc_2^2})+P_0(F\geq\frac{(n-1)m{c_1'}^2}{(m-1)n{c_2'}^2})=\alpha$$
+所以$\frac{c_1^2}{c_2^2}=\frac{(m-1)n F_{\alpha/2}(m-1,n-1)}{(n-1)m},\frac{{c_1'}^2}{{c_2'}^2}=\frac{(m-1)n F_{1-\alpha/2}(m-1,n-1)}{(n-1)m}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma_1^2\neq\sigma_2^2)=F_{m-1,n-1}(\frac{(n-1)m\sigma_2^2{c_1'}^2}{(m-1)n\sigma_1^2{c_2'}^2})-F_{m-1,n-1}(\frac{(n-1)m\sigma_2^2c_1^2}{(m-1)n\sigma_1^2c_2^2})$$
+
+####2）$H_1:\sigma_1^2\geq\sigma_2^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{F\geq F_{1-\alpha}(m-1,n-1)\}$$
+$$\overline{W}=\{F\leq F_{1-\alpha}(m-1,n-1)\}$$
+则有$$P_0(F\geq\frac{\frac{m}{m-1}c_1^2}{\frac{n}{n-1}c_2^2})=\alpha$$
+所以$\frac{c_1^2}{c_2^2}=\frac{(m-1)n F_{1-\alpha}(m-1,n-1)}{(n-1)m}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma_1^2\geq\sigma_2^2)=F_{m-1,n-1}(\frac{(n-1)m\sigma_2^2c_1^2}{(m-1)n\sigma_1^2c_2^2})$$
+
+####3）$H_1:\sigma_1^2\leq\sigma_2^2$
+&emsp;&emsp;对于该检验，拒绝域与接受域分别为：
+$$W=\{F\leq F_\alpha(m-1,n-1)\}$$
+$$\overline{W}=\{F\geq F_\alpha(m-1,n-1)\}$$
+则有$$P_0(F\leq\frac{\frac{m}{m-1}c_1^2}{\frac{n}{n-1}c_2^2})=\alpha$$
+所以$\frac{c_1^2}{c_2^2}=\frac{(m-1)n F_\alpha(m-1,n-1)}{(n-1)m}$
+由此根据检验的势函数，我们可以得出犯第二类错误的概率：
+$$\beta(\sigma_1^2\leq\sigma_2^2)=1-F_{m-1,n-1}(\frac{(n-1)m\sigma_2^2c_1^2}{(m-1)n\sigma_1^2c_2^2})$$
+
+#R语言实现及例题验证
+
+##R语言实现
+
+&emsp;&emsp;根据上述公式，我们发现有些的第二类错误并不容易算出来。
+好在统计软件的快速发展，可以使我们快速的得到各个分布的值以及犯第二类错误的概率达到某一值所需要的最小n。
+本文将通过R语言来实现以上所有的公式，同时为了便于计算，我利用公式编写了一系列函数用来计算犯第二类错误的概率以及指定$\beta$的最小的样本量。其原代码附在文后。
+
+&emsp;&emsp;之后我将利用一些建设检验的相关例题，结合编写的R语言的函数来计算相关数值。
+```{r include=FALSE}
+Pb = function(params,sigmaknown){
+  if(sigmaknown){
+    c = params[5]*qnorm(1-params[2]/2,0,1)/sqrt(params[1])
+    Pb = abs(pnorm((c+params[3]-params[4])*sqrt(params[1])/params[5])-pnorm((-c+params[3]-params[4])*sqrt(params[1])/params[5])-params[6])
+    return(Pb)
+  }else{
+    c = params[5]*qt(1-params[2]/2,0,1)/sqrt(params[1],n-1)
+    Pb = abs(pt((c+params[3]-params[4])*sqrt(params[1])/params[5],n-1)-pt((-c+params[3]-params[4])*sqrt(params[1])/params[5])-params[6],n-1)
+    return(Pb)
+  }
+}
+Pb_1 = function(params){
+  c = params[5]*qt(params[2],params[1]-1)/sqrt(params[1])+params[3]
+  Pb_1 = abs(1-pt((c-params[4])/params[5]*sqrt(params[1]),params[1]-1)-params[6])
+  return(Pb_1)
+}
+Pb_2 = function(params){
+  c = params[5]*qt(1-params[2],params[1]-1)/sqrt(params[1])+params[3]
+  Pb_2 = abs(pt((c-params[4])/params[5]*sqrt(params[1]),params[1]-1)-params[6])
+  return(Pb_2)
+}
+n_min = function(n,alpha,mu0,mu1,sigma,beta,sigmaknown){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb,sigmaknown=sigmaknown,
+             lower = c(n,alpha,mu0,mu1,sigma,0),
+             upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+n_min_1 = function(n,alpha,mu0,mu1,sigma,beta){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb_1,
+               lower = c(n,alpha,mu0,mu1,sigma,0),
+               upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+n_min_2 = function(n,alpha,mu0,mu1,sigma,beta){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb_2,
+               lower = c(n,alpha,mu0,mu1,sigma,0),
+               upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+secerror = function(x,y=NULL,alpha=0.05,beta=0.05,mu=0,mu1=NULL,mu2=NULL,sigma=NULL,sigma1=NULL,sigma2=NULL,alternative=c("two-side","less","greater"),varequal=TRUE){
+  n = length(x)
+  ifelse(is.null(mu1),mu1<-mean(x),mu1<-mu1)
+  if(is.null(y)){if(is.null(sigma)){              #don't know sigma  result = secerror(x=rnorm(25,980,65),mu=1000,mu1 = 980,alpha = 0.05,beta = 0.1,sigma1 = 65,alternative = "less")
+    sigma = sigma1
+    if(alternative=="two-side"){                  #H_1:mu<>mu0
+      c=sigma*qt(1-alpha/2,n-1)/sqrt(n)
+      P = pt((c+mu-mu1)*sqrt(n)/sigma,n-1)-pt((-c+mu-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min(n,alpha,mu,mu1,sigma,beta,FALSE)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                      #H_1:mu<mu0  
+      c = sigma*qt(alpha,n-1)/sqrt(n)+mu
+      P = 1-pt((c-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min_1(n,alpha,mu,mu1,sigma,beta)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                   #H_1:mu>mu0
+      c = sigma*qt(1-alpha,n-1)/sqrt(n)+mu
+      P = pt((c-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min_2(n,alpha,mu,mu1,sigma,beta)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+    return(result)
+    }
+  }else{                                         #sigma have known
+    if(alternative=="two-side"){                 #H_1:mu<>mu0
+      c=sigma*qnorm(1-alpha/2)/sqrt(n)
+      P = pnorm((c+mu-mu1)*sqrt(n)/sigma)-pnorm((-c+mu-mu1)*sqrt(n)/sigma)
+      n = n_min(n,alpha,mu,mu1,sigma,beta,TRUE)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                      #H_1:mu<mu0
+      c = sigma*qnorm(alpha)/sqrt(n)+mu
+      P = 1-pnorm((c-mu1)*sqrt(n)/sigma)
+      n = ceiling(sigma^2*(qnorm(beta)+qnorm(alpha))^2/(mu1-mu)^2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                  #H-1:mu>mu0
+      c = sigma*qnorm(1-alpha)/sqrt(n)+mu
+      P = pnorm((c-mu1)*sqrt(n)/sigma)
+      n = ceiling(sigma^2*(qnorm(beta)-qnorm(1-alpha))^2/(mu-mu1)^2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+  }
+  }else{                                         #double sample sigma
+    m=n;n=length(y)
+    ifelse(is.null(mu2),mu2<-mean(y),mu2<-mu2)
+    if(is.null(sigma1)|is.null(sigma2)){         #double sample sigma don't know
+      sw = sqrt(((m-1)*var(x)+(n-1)*var(y))/(m+n-2))
+      if(alternative=="two-side"){               #H_1:mu1<>mu2
+      c=sw*sqrt(1/m+1/n)*qt(1-alpha/2,m+n-2)
+      P = pt((c+mu2-mu1)/sw/sqrt(1/m+1/n),m+n-2)-pt((-c+mu2-mu1)/sw/sqrt(1/m+1/n),m+n-2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                     #H_1:mu1<mu2
+      c = sw*sqrt(1/m+1/n)*qt(alpha,m+n-2)
+      P = 1-pt((c-mu1+mu2)/sqrt(1/m+1/n)/sw,m+n-2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                 #H_1:mu>mu2
+    c = sw*sqrt(1/m+1/n)*qt(1-alpha,m+n-2)
+    P = pt((c-mu1+mu2)/sqrt(1/m+1/n)/sw,m+n-2)
+    result = cat("犯第二类错误的概率为:P=",P,"\n")
+    return(result)
+    }
+    }else{                                      #double sample sigma have known
+      if(alternative=="two-side"){              #H_1:mu1<>mu2
+        c=sigma*qnorm(1-alpha/2)/sqrt(sigma1^2/m+sigma^2/n)
+        P = pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))-pnorm((-c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+      if(alternative=="less"){                    #H_1:mu1<mu2
+        c = qnorm(alpha)/sqrt(sigma1^2/m+sigma^2/n)
+        P = 1-pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+      if(alternative=="greater"){                 #H_1:mu>mu2
+        c = qnorm(1-alpha)/sqrt(sigma1^2/m+sigma^2/n)
+        P = pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+    }
+    }
+}
+
+var_secerror = function(x,y=NULL,alpha=0.05,beta=0.1,sigma=NULL,sigma1=NULL,sigma2=NULL,alternative=c("two-side","less","greater")){
+  if(is.null(sigma)){
+    return("Please enter sigma")
+  }
+  ifelse(is.null(sigma1),sigma1<-sd(x),sigma1<-sigma1)
+  if(is.null(y)){                               #single sample
+    n = length(x)
+    if(alternative=="two-side"){
+      c_1 = sigma^2*qchisq(alpha/2,n-1)/n;
+      c_2 = sigma^2*qchisq(1-alpha/2,n-1)/n
+      P = pchisq(n*c_2/sigma1^2,n-1)-pchisq(n*c_1/sigma1^2,n-1)
+      Pb = function(params){
+        c_1 = params[2]^2*qchisq(params[4]/2,params[1]-1)/params[1];
+        c_2 = params[2]^2*qchisq(1-params[4]/2,params[1]-1)/params[1]
+        Pb = abs(pchisq(params[1]*c_2/params[3]^2,params[1]-1)-pchisq(params[1]*c_1/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      n = ceiling(n_min_sd(n,sigma,sigma1,alpha,beta))
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){
+      c = sigma^2*qchisq(alpha,n-1)/n
+      P = 1-pchisq(n*c/sigma1^2,n-1)
+      Pb = function(params){
+        c = params[2]^2*qchisq(1-params[4],params[1]-1)/params[1]
+        Pb = abs(pchisq(params[1]*c/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){
+      c = sigma^2*qchisq(1-alpha,n-1)/n
+      P = pchisq(n*c/sigma1^2,n-1)
+      Pb = function(params){
+        c = params[2]^2*qchisq(params[4],params[1]-1)/params[1]
+        Pb = abs(1-pchisq(params[1]*c/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+  }else{                                        #double sample
+    m=length(x);n=length(y)
+    ifelse(is.null(sigma2),sigma2<-sd(y),sigma2<-sigma2)
+    if(alternative=="two-side"){
+      c_11_c_21 = (m-1)*n*qf(alpha/2,m-1,n-1)/(n-1)/m;
+      c_12_c_22 = (m-1)*n*qf(1-alpha/2,m-1,n-1)/(n-1)/m
+      P = pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_12_c_22,m-1,n-1)-pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_11_c_21,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="less"){
+      c_1_c_2 = (m-1)*n*qf(alpha,m-1,n-1)/(n-1)/m
+      P = 1-pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_1_c_2,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){
+      c_1_c_2 = (m-1)*n*qf(1-alpha,m-1,n-1)/(n-1)/m
+      P = pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_1_c_2,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+  }
+}
+```
+
+##例题验证
+
+###1.单个正态总体均值检验($\sigma$已知)
+
+&emsp;&emsp;1)设某产品的指标服从正态分布，它的标准差$\sigma$已知为150，今抽了一个容量为26的样本，计算得平均值为1637。问在5％的显著水平下，认为这批产品的指标的期望值$\mu$为1600，其犯第二类错误的概率为多少，控制犯第二类错误在0.1之内所需要的样本量为?
+
+&emsp;&emsp;由题，原假设$H_0:\mu=1600$，备择假设为$H_1:\mu\neq 1600$。使用R语言计算得到结果：
+```{r}
+result = secerror(rnorm(26,1637,150),mu=1600,mu1 = 1637,
+                  alpha = 0.05,beta = 0.1,sigma = 150,alternative = "two-side")
+```
+
+&emsp;&emsp;2)某纺织厂在正常的运转条件下，平均每台布机每小时经纱断头数为O.973根，各台布机断头数的标准差为O.16根，该厂进行工艺改进，减少经纱上浆率，在200台布机上进行试验，结果平均每台每小时经纱断头数为O.994根，标准差为0.16根。新工艺上浆率推广($\alpha = 0.05$)犯第二类错误的概率以及控制犯第二类错误在0.1之内所需要的样本量?
+
+&emsp;&emsp;由题，原假设$H_0:\mu>0.973$，备择假设为$H_1:\mu\leq 0.973$。使用R语言计算得到结果：
+```{r}
+result = secerror(x=rnorm(200,0.973,0.162),mu=0.973,mu1 = 0.994,
+                  alpha = 0.05,beta = 0.1,sigma = 0.16,alternative = "less")
+```
+
+###2.单个正态总体均值检验($\sigma$未知)
+
+&emsp;&emsp;3)已知某种元件的寿命服从正态分布，要求该元件的平均寿命不低于1000h，现从这批元件中随机抽取25
+知，测得平均寿命$\overline{x}=980h$，标准差$\sigma=65h$，试在水平$\alpha=0.05$下，
+推断符合条件后犯第二类错误的概率为多少？控制第二类错误的概率为0.1的最小样本量为多少？
+
+```{r}
+result = secerror(x=rnorm(25,980,65),mu=1000,mu1 = 980,
+                  alpha = 0.05,beta = 0.1,sigma1 = 65,alternative = "less")
+```
+
+###3.两个正态总体均值差的检验
+
+&emsp;&emsp;4)下面给出了两个文学家马克·吐温（Mark Twain）的8偏小品文以及斯诺·特格拉斯（Snodgrass）的10偏小品文中由3格字母组成的词比例.  
+
+>马克·吐温：    0.225，0.262，0.217，0.240，0.230，0.229，0.235，0.217  
+>斯诺·特格拉斯：0.209，0.205，0.196，0.210，0.202，0.207，0.224，0.223，0.220，0.201 
+
+&emsp;&emsp;设两组数据分别来自正态分布，且两总体方差相等，两样本相互独立，
+推断两个作家所写的小品文中包含由3格字母组成的词的比例有显著性的差异（$\alpha=0.05$）犯第二类错误的概率为多少？
+```{r}
+result = secerror(x=c(0.225,0.262,0.217,0.240,0.230,0.229,0.235,0.217),
+                  y=c(0.209,0.205,0.196,0.210,0.202,0.207,0.224,0.223,0.220,0.201),
+                  alpha = 0.05,alternative = "two-side")
+```
+
+###4.单个样本方差检验
+
+&emsp;&emsp;5)某厂生产的一中电池，其寿命长期以来服从方差$\sigma^2$=5000小时的正态分布。
+现有一批这种电池，从生产的情况来看，寿命的波动性有所改变，现随机地抽取26只电池，测得寿命的样本方差$\sigma^2$=9200小时。
+根据这一数据推断这批电池寿命的波动性较以往有显著性的变化（取$\alpha=0.02$），犯第二类错误的概率为多少？控制第二类错误的概率为0.1的最小样本量为多少？
+
+```{r}
+result = var_secerror(x = rnorm(26,0,sqrt(9200)),alpha = 0.02,beta = 0.1,
+                      sigma = sqrt(5000),sigma1 = sqrt(9200),alternative = "two-side")
+```
+
+###5.双样本方差检验
+
+&emsp;&emsp;6)在十块地上同时试种甲、乙两种品种作物，设每种作物的产量服从正态分布，并计算得$x=30.97,y=21.79,s_x=26.7,s_y=12.1$。
+这两种品种的产量在$\alpha=O.01$下，推论犯第二类错误的概率为多少？
+```{r}
+var_secerror(x=rnorm(10,30.97,26.7),y=rnorm(10,21.79,12.1),alpha = 0.01,
+             sigma = 1,sigma1 = 26.7,sigma2 = 12.1,alternative = "two-side")
+```
+
+#总结
+
+&emsp;&emsp;本文通过着力于分析假设检验的计算原理，利用势函数，求出在各种情况下的检验推论犯第二类错误的概率。
+同时针对单个样本，我们结合其给定第二类概率，可以计算出最小样本量$n$。
+我们可以发现，尽管样本情况繁多，但是，只要结合势函数，以及第二类错误的基本定义，我们依然可以方便的算出检验犯第二类错误的概率。
+本次研究为了可以得到快速且准确的解，我大量的使用了R语言的编程功能，利用自己编写的函数，快速地计算出各种情况不同样本的检验情况。
+该函数覆盖了所有双样本以内正态总体的假设检验的情况，可在日后需要时方便快速使用。
+
+&emsp;&emsp;本次研究注重于公式推导以及计算机程序语言实现。借助于日益强大的计算机，我相信，日后统计学会越来越多的依靠统计软件。
+同时计算机的运用，也会使得统计计算变成一件简单的事。
+
+#函数程序源代码
+```{r}
+Pb = function(params,sigmaknown){
+  if(sigmaknown){
+    c = params[5]*qnorm(1-params[2]/2,0,1)/sqrt(params[1])
+    Pb = abs(pnorm((c+params[3]-params[4])*sqrt(params[1])/params[5])-
+               pnorm((-c+params[3]-params[4])*sqrt(params[1])/params[5])-params[6])
+    return(Pb)
+  }else{
+    c = params[5]*qt(1-params[2]/2,0,1)/sqrt(params[1],n-1)
+    Pb = abs(pt((c+params[3]-params[4])*sqrt(params[1])/params[5],n-1)-
+               pt((-c+params[3]-params[4])*sqrt(params[1])/params[5])-params[6],n-1)
+    return(Pb)
+  }
+}
+Pb_1 = function(params){
+  c = params[5]*qt(params[2],params[1]-1)/sqrt(params[1])+params[3]
+  Pb_1 = abs(1-pt((c-params[4])/params[5]*sqrt(params[1]),params[1]-1)-params[6])
+  return(Pb_1)
+}
+Pb_2 = function(params){
+  c = params[5]*qt(1-params[2],params[1]-1)/sqrt(params[1])+params[3]
+  Pb_2 = abs(pt((c-params[4])/params[5]*sqrt(params[1]),params[1]-1)-params[6])
+  return(Pb_2)
+}
+n_min = function(n,alpha,mu0,mu1,sigma,beta,sigmaknown){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb,sigmaknown=sigmaknown,
+             lower = c(n,alpha,mu0,mu1,sigma,0),
+             upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+n_min_1 = function(n,alpha,mu0,mu1,sigma,beta){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb_1,
+               lower = c(n,alpha,mu0,mu1,sigma,0),
+               upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+n_min_2 = function(n,alpha,mu0,mu1,sigma,beta){
+  rex = nlminb(c(n,alpha,mu0,mu1,sigma,beta),Pb_2,
+               lower = c(n,alpha,mu0,mu1,sigma,0),
+               upper = c(Inf,alpha,mu0,mu1,sigma,beta))
+  return(rex$par)
+}
+secerror = function(x,y=NULL,alpha=0.05,beta=0.05,
+                    mu=0,mu1=NULL,mu2=NULL,sigma=NULL,sigma1=NULL,sigma2=NULL,
+                    alternative=c("two-side","less","greater"),varequal=TRUE){
+  n = length(x)
+  ifelse(is.null(mu1),mu1<-mean(x),mu1<-mu1)
+  if(is.null(y)){if(is.null(sigma)){              #don't know sigma  
+    sigma = sigma1
+    if(alternative=="two-side"){                  #H_1:mu<>mu0
+      c=sigma*qt(1-alpha/2,n-1)/sqrt(n)
+      P = pt((c+mu-mu1)*sqrt(n)/sigma,n-1)-pt((-c+mu-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min(n,alpha,mu,mu1,sigma,beta,FALSE)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                      #H_1:mu<mu0  
+      c = sigma*qt(alpha,n-1)/sqrt(n)+mu
+      P = 1-pt((c-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min_1(n,alpha,mu,mu1,sigma,beta)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                   #H_1:mu>mu0
+      c = sigma*qt(1-alpha,n-1)/sqrt(n)+mu
+      P = pt((c-mu1)*sqrt(n)/sigma,n-1)
+      n = n_min_2(n,alpha,mu,mu1,sigma,beta)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+    return(result)
+    }
+  }else{                                         #sigma have known
+    if(alternative=="two-side"){                 #H_1:mu<>mu0
+      c=sigma*qnorm(1-alpha/2)/sqrt(n)
+      P = pnorm((c+mu-mu1)*sqrt(n)/sigma)-pnorm((-c+mu-mu1)*sqrt(n)/sigma)
+      n = n_min(n,alpha,mu,mu1,sigma,beta,TRUE)[1]
+      n = ceiling(n)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                      #H_1:mu<mu0
+      c = sigma*qnorm(alpha)/sqrt(n)+mu
+      P = 1-pnorm((c-mu1)*sqrt(n)/sigma)
+      n = ceiling(sigma^2*(qnorm(beta)+qnorm(alpha))^2/(mu1-mu)^2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                  #H-1:mu>mu0
+      c = sigma*qnorm(1-alpha)/sqrt(n)+mu
+      P = pnorm((c-mu1)*sqrt(n)/sigma)
+      n = ceiling(sigma^2*(qnorm(beta)-qnorm(1-alpha))^2/(mu-mu1)^2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+  }
+  }else{                                         #double sample sigma
+    m=n;n=length(y)
+    ifelse(is.null(mu2),mu2<-mean(y),mu2<-mu2)
+    if(is.null(sigma1)|is.null(sigma2)){         #double sample sigma don't know
+      sw = sqrt(((m-1)*var(x)+(n-1)*var(y))/(m+n-2))
+      if(alternative=="two-side"){               #H_1:mu1<>mu2
+      c=sw*sqrt(1/m+1/n)*qt(1-alpha/2,m+n-2)
+      P = pt((c+mu2-mu1)/sw/sqrt(1/m+1/n),m+n-2)-
+        pt((-c+mu2-mu1)/sw/sqrt(1/m+1/n),m+n-2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="less"){                     #H_1:mu1<mu2
+      c = sw*sqrt(1/m+1/n)*qt(alpha,m+n-2)
+      P = 1-pt((c-mu1+mu2)/sqrt(1/m+1/n)/sw,m+n-2)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){                 #H_1:mu>mu2
+    c = sw*sqrt(1/m+1/n)*qt(1-alpha,m+n-2)
+    P = pt((c-mu1+mu2)/sqrt(1/m+1/n)/sw,m+n-2)
+    result = cat("犯第二类错误的概率为:P=",P,"\n")
+    return(result)
+    }
+    }else{                                      #double sample sigma have known
+      if(alternative=="two-side"){              #H_1:mu1<>mu2
+        c=sigma*qnorm(1-alpha/2)/sqrt(sigma1^2/m+sigma^2/n)
+        P = pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))-
+          pnorm((-c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+      if(alternative=="less"){                    #H_1:mu1<mu2
+        c = qnorm(alpha)/sqrt(sigma1^2/m+sigma^2/n)
+        P = 1-pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+      if(alternative=="greater"){                 #H_1:mu>mu2
+        c = qnorm(1-alpha)/sqrt(sigma1^2/m+sigma^2/n)
+        P = pnorm((c-mu1+mu2)/sqrt(sigma1^2/m+sigma^2/n))
+        result = cat("犯第二类错误的概率为:P=",P,"\n")
+        return(result)
+      }
+    }
+    }
+}
+
+var_secerror = function(x,y=NULL,alpha=0.05,beta=0.1,
+                        sigma=NULL,sigma1=NULL,sigma2=NULL,
+                        alternative=c("two-side","less","greater")){
+  if(is.null(sigma)){
+    return("Please enter sigma")
+  }
+  ifelse(is.null(sigma1),sigma1<-sd(x),sigma1<-sigma1)
+  if(is.null(y)){                               #single sample
+    n = length(x)
+    if(alternative=="two-side"){
+      c_1 = sigma^2*qchisq(alpha/2,n-1)/n;
+      c_2 = sigma^2*qchisq(1-alpha/2,n-1)/n
+      P = pchisq(n*c_2/sigma1^2,n-1)-pchisq(n*c_1/sigma1^2,n-1)
+      Pb = function(params){
+        c_1 = params[2]^2*qchisq(params[4]/2,params[1]-1)/params[1];
+        c_2 = params[2]^2*qchisq(1-params[4]/2,params[1]-1)/params[1]
+        Pb = abs(pchisq(params[1]*c_2/params[3]^2,params[1]-1)-
+                   pchisq(params[1]*c_1/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      n = ceiling(n_min_sd(n,sigma,sigma1,alpha,beta))
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="less"){
+      c = sigma^2*qchisq(alpha,n-1)/n
+      P = 1-pchisq(n*c/sigma1^2,n-1)
+      Pb = function(params){
+        c = params[2]^2*qchisq(1-params[4],params[1]-1)/params[1]
+        Pb = abs(pchisq(params[1]*c/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){
+      c = sigma^2*qchisq(1-alpha,n-1)/n
+      P = pchisq(n*c/sigma1^2,n-1)
+      Pb = function(params){
+        c = params[2]^2*qchisq(params[4],params[1]-1)/params[1]
+        Pb = abs(1-pchisq(params[1]*c/params[3]^2,params[1]-1)-params[5])
+        return(Pb)
+      }
+      n_min_sd = function(n,sigma,sigma1,alpha,beta){
+        res = nlminb(c(n,sigma,sigma1,alpha,beta),Pb,
+                     lower = c(n,sigma,sigma1,alpha,beta),
+                     upper = c(Inf,sigma,sigma1,alpha,beta))
+        return(res$par[1])
+      }
+      result = cat("犯第二类错误的概率为:P=",P,"\n",
+                   "如要控制犯第二类错误的概率在",beta,"之内","\n",
+                   "最小样本量为:",n,"\n")
+      return(result)
+    }
+  }else{                                        #double sample
+    m=length(x);n=length(y)
+    ifelse(is.null(sigma2),sigma2<-sd(y),sigma2<-sigma2)
+    if(alternative=="two-side"){
+      c_11_c_21 = (m-1)*n*qf(alpha/2,m-1,n-1)/(n-1)/m;
+      c_12_c_22 = (m-1)*n*qf(1-alpha/2,m-1,n-1)/(n-1)/m
+      P = pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_12_c_22,m-1,n-1)-
+        pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_11_c_21,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="less"){
+      c_1_c_2 = (m-1)*n*qf(alpha,m-1,n-1)/(n-1)/m
+      P = 1-pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_1_c_2,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+    if(alternative=="greater"){
+      c_1_c_2 = (m-1)*n*qf(1-alpha,m-1,n-1)/(n-1)/m
+      P = pf((n-1)*m*sigma2^2/((m-1)*n*sigma1^2)*c_1_c_2,m-1,n-1)
+      result = cat("犯第二类错误的概率为:P=",P,"\n")
+      return(result)
+    }
+  }
+}
+```
+
+#参考文献
+
+[1]《数理统计学简史》.陈希孺.湖南教育出版社.2002年
+
+[2]《概率论与数理统计教程》. 茆诗松.程依明.濮晓龙.高等教育出版社.2011年
+
+[3]《数理统计学教程》.陈希孺.中国科学技术大学出版社.2009年
+
+[4]《论假设检验中的两类错误》.蔡越江.数理统计与管理.18卷3期1999年3月
