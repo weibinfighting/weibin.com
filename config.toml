@@ -1,0 +1,90 @@
+baseurl = "https://weibinqu.xyz"
+languageCode = "en-us"
+title = "Weibin QU| 瞿伟斌"
+theme = "hugo-lithium"
+canonifyurls = true
+relativeurls = true
+googleAnalytics = ""
+disqusShortname = "weibin"
+ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
+hasCJKLanguage = true
+enableEmoji = true
+footnotereturnlinkcontents = "↩"
+
+[params]
+    description = "A Blog of WeiBin Qu."
+    disqusURL = "http://weibinqu.xyz"
+    github = "https://github.com/weibinfighting"
+    email = "qubinhan@gmail.com"
+    footer = "&copy; [Weibin Qu](https://weibinqu.xyz) 2016-2017 | [Github](https://github.com/weibinfighting)"
+    # options for highlight.js (version, additional languages, and theme)
+    customJS = ["js/external-link.js", "js/center-img.js", "js/right-quote.js", "js/no-highlight.js", "js/fix-footnote.js", "js/math-code.js"]
+    highlightjsVersion = "9.12.0"
+    highlightjsCDN = "//cdn.bootcss.com"
+    highlightjsLang = ["r", "yaml","tex"]
+    highlightjsTheme = "github"
+
+    MathJaxCDN = "//cdn.bootcss.com"
+    MathJaxVersion = "2.7.1"
+
+[author]
+      en = "Weibin Qu"
+      cn = "瞿伟斌"
+
+[permalinks]
+  cn = "/cn/:year/:month/:slug/"
+  en = "/en/:year/:month/:slug/"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Blog"
+    url ="/en/"
+    weight = 2
+[[menu.main]]
+    name = "关于"
+    url = "/cn/about/"
+    weight = 3
+[[menu.main]]
+    name = "博客"
+    url = "/cn/"
+    weight = 4
+[[menu.en]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.en]]
+    name = "About"
+    url = "/en/about/"
+    weight = 2
+[[menu.main]] 
+    name = "Blog"
+    url = "/en/"
+    weight = 3
+[[menu.main]]
+    name = "中文"
+    url = "/cn/"
+    weight = 4
+[[menu.cn]]
+    name = "首页"
+    url = "/cn/about/"
+    weight = 1
+[[menu.cn]]
+    name = "关于"
+    url = "/cn/about/"
+    weight = 2
+[[menu.cn]]
+    name = "博客"
+    url = "/cn/"
+    weight = 3
+[[menu.cn]]
+    name = "English"
+    url = "/en/"
+    weight = 4
+
+
+[blackfriday]
+    extensionsmask = ["noIntraEmphasis"]
+    fractions = false
