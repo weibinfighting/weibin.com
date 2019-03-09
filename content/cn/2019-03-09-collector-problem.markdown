@@ -53,7 +53,6 @@ slug: collector-problem
 以此类推，抽到第 `\(m\)` 张卡所需购买的包数期望为： 
 `$$1+\frac{1}{P_{2}}+\farc{1}{P_{3}}+\cdots+\frac{1}{P_{m}}&=&1+\frac{m}{m-1}+\farc{m}{m-2}+\cdots+\frac{m}{1}
 &=&m(1+\frac{1}{2}+\cdots+\frac{1}{m})$$ 
-
 虽然 `\(\sum_{n=1}^{\infty}\frac{1}{n}\)` 是一个发散级数，但是有限和我们还是可以进行计算的。
 
 然而这里计算的只是我们在理想情况下的期望值。
