@@ -61,7 +61,7 @@ footnotereturnlinkcontents = "↩"
     weight = 2
 [[menu.main]] 
     name = "Blog"
-    url = "/en/"
+    url = "/en-about"
     weight = 3
 [[menu.main]]
     name = "中文"
@@ -81,7 +81,7 @@ footnotereturnlinkcontents = "↩"
     weight = 3
 [[menu.cn]]
     name = "English"
-    url = "/en/"
+    url = "/en-about"
     weight = 4
 
 
