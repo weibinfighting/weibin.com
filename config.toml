@@ -16,7 +16,7 @@ footnotereturnlinkcontents = "↩"
     disqusURL = "http://weibinqu.xyz"
     github = "https://github.com/weibinfighting"
     email = "qubinhan@gmail.com"
-    footer = "&copy; [Weibin Qu](https://weibinqu.xyz) 2016-2017 | [Github](https://github.com/weibinfighting)"
+    footer = "&copy; [Weibin Qu](https://weibinqu.xyz) 2016-2024 | [Github](https://github.com/weibinfighting)"
     # options for highlight.js (version, additional languages, and theme)
     customJS = ["js/external-link.js", "js/center-img.js", "js/right-quote.js", "js/no-highlight.js", "js/fix-footnote.js", "js/math-code.js"]
     highlightjsVersion = "9.12.0"
