@@ -5,7 +5,6 @@ theme = "hugo-ivy"
 canonifyurls = true
 relativeurls = true
 googleAnalytics = ""
-disqusShortname = "weibin"
 ignoreFiles = ["\\.Rmd$", "_files$", "_cache$"]
 hasCJKLanguage = true
 enableEmoji = true
@@ -13,7 +12,6 @@ footnotereturnlinkcontents = "↩"
 
 [params]
     description = "A Blog of WeiBin Qu."
-    disqusURL = "http://weibinqu.xyz"
     github = "https://github.com/weibinfighting"
     email = "qubinhan@gmail.com"
     footer = "&copy; [Weibin Qu](https://weibinqu.xyz) 2016-2024 | [Github](https://github.com/weibinfighting)"
