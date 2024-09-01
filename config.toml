@@ -1,7 +1,7 @@
 baseurl = "https://weibinqu.xyz"
 languageCode = "en-us"
 title = "Weibin QU| 瞿伟斌"
-theme = "hugo-PaperMod"
+theme = "anatole"
 canonifyurls = true
 relativeurls = true
 googleAnalytics = ""
