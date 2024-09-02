@@ -11,13 +11,13 @@ tags: []
 
 *（本文包含剧透，请还未观看《东方快车谋杀案》且近期打算观看的朋友于观看后阅读，而已看过的或不打算看得朋友可放心阅读）*
 
-![帅波洛](https://github.com/weibinfighting/Image/blob/master/%E6%B3%A2%E6%B4%9Band%E5%BF%AB%E8%BD%A6.jpg?raw=true)
+![帅波洛](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E6%B3%A2%E6%B4%9Band%E5%BF%AB%E8%BD%A6.jpg)
 
 ##究竟谁是凶手
 
 &emsp;&emsp;最近著名侦探小说作家阿加莎的经典小说《东方快车谋杀案》又一次被搬上了荧幕，想必很多阿婆的粉丝都贡献了一张或多张电影票。当然在电影中沉迷于结尾的反转以及对人性探讨的同时，大侦探波洛的推理同样令人激动人心。在我们为波洛的奇特想象和脑洞大开而惊奇时，我们是否想过为什么那些大侦探（诸如福尔摩斯、波洛）能有这样的推理，而普通人却没有呢？更进一步，为什么我们会相信这些侦探们的推理而不是我们自己呢？
 
-![阿婆美照](https://github.com/weibinfighting/Image/blob/master/a1.jpg?raw=true)
+![阿婆照片](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E9%98%BF%E5%8A%A0%E8%8E%8E2.jpg)
 
 （先让我们回顾一下故事的情节）
 
@@ -47,7 +47,7 @@ tags: []
 
 结论：B是凶手
 
-![红睡衣](https://github.com/weibinfighting/Image/blob/master/%E7%BA%A2%E7%9D%A1%E8%A1%A32.png?raw=true)
+![红睡衣](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E7%BA%A2%E7%9D%A1%E8%A1%A32.png)
 
 &emsp;&emsp;想必看到这里，大家就会发现两者的区别。在**演绎**的情况下，只要前提为真，那么其结论必为真。而在归纳的情况下却不尽然，即使归纳的前提必为真，那么其结论依然可能为假，这就是当我们在电影中看到人们在波洛的行李箱中发现了红色睡衣时，大家都会心一笑的原因，因为波洛显然不是凶手。
 
@@ -83,7 +83,7 @@ tags: []
 
 ##结局
 
-![雪地](https://github.com/weibinfighting/Image/blob/master/%E9%9B%AA%E5%9C%B0.png?raw=true)
+![雪地](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E9%9B%AA%E5%9C%B0.png)
 
 那么现在，让我们再回头看看大侦探波洛究竟是如何破案的
 
@@ -119,12 +119,12 @@ tags: []
 
 &emsp;&emsp;根据我们前面提出的『最佳说明推理』，若要第一个结论为真，那么有太多的问题说不通，即使说得通，这样的可能性也实在难以令人信服。所以基于此原则，反而是原来不太可能的结论二更具有说服力，从而让我们的大侦探波洛选择第二种结论作为他对案件真相的推理。
 
-![审判](https://github.com/weibinfighting/Image/blob/master/%E5%AE%A1%E5%88%A4.png?raw=true)
+![审判](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E5%AE%A1%E5%88%A4.png)
 
 &emsp;&emsp;最终，真相水落石出。列车上的十二位嫌疑人都是凶手，他们都是死者之前在美国所犯恶行的受害者，其自行组成了陪审团与审判者，宣判并执行了这位早就该受到法律制裁的恶人的死刑。死者生前作恶多端，十恶不赦，因为一起绑架杀人案造成了十几个人的不幸，最后还逃过了法律的制裁依旧在世上自在地活着，在外人看来，其实在是死有余辜。那么私下处决这个人的行为又是否合理呢？
 最终面对警察，波洛给出了自己的答案——他选择隐瞒自己所猜想的第二个结论，而是将第一个结论作为自己的推断告诉警察，即车上的乘客都是无辜的，真正的凶手已经逃离了列车。最终波洛也与其他人一同，成为了『凶手』，或者说『帮凶』。那么这个答案究竟是对是错呢？原谅我无法给出回答。
 
-![快车](https://github.com/weibinfighting/Image/blob/master/%E5%BF%AB%E8%BD%A6.png?raw=true)
+![快车](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E5%BF%AB%E8%BD%A6.png)
 
 &emsp;&emsp;于是，在一列从伊斯坦布尔开往加来的东方快车上，一位客人死了，而车上的所有人都与他的死有关，所有人都是凶手！原因是这个人有着不可赦免的罪行，那么因为这个理由就可以杀人了吗？因为手持正义就可以杀人吗？
 

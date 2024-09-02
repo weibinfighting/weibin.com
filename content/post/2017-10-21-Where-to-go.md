@@ -20,13 +20,12 @@ tags: []
 
 &emsp;&emsp;为了更好的理解，我们先来看一张图：
 
-![population of USA_1](https://github.com/weibinfighting/Image/blob/master/%E7%BE%8E%E5%9B%BD%E4%BA%BA%E5%8F%A3%E5%88%86%E5%B8%83%E5%9B%BE.png?raw=true)
-
+![population of USA_1](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/%E7%BE%8E%E5%9B%BD%E4%BA%BA%E5%8F%A3%E5%9B%BE.png)
 
 
 &emsp;&emsp;在2010年美国的人口普查中[^数据来自美国人口普查网]，纽约又一次摘得桂冠，以817万人排在最靠前的位置。通过对比数据发现有九个城市人口规模超过一百万，有271个城市的规模在十万以上，而与此同时，有大量的城市人口低于一万。当然这不能说明什么，因为这只是表明美国城市众多而且除了那些大城市外还有众多小城市，这些城市的名字或许连美国人自己都不清楚。但是，当我们将数据稍作变换时，有趣的事情发生了：
 
-![The population of USA2](https://github.com/weibinfighting/Image/blob/master/log_of_population.png?raw=true)
+![The population of USA2](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/log_of_population.png)
 
 &emsp;&emsp;当我们将城市的人口规模取对数，同时将对应城市的排名取对数进行比较，我们就会发现一个很有趣的现象，那就是人口规模的对数与相对排名的对数有着极强的线性关系。将我们前面的那个数学表达式取对数变形，就可以得到一个线性等式：
 $$lnR_i=-\alpha lnP_i+C,$$
