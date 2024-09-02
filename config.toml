@@ -1,7 +1,7 @@
 baseurl = "https://weibinqu.xyz"
 languageCode = "en-us"
 title = "Weibin QU| 瞿伟斌"
-theme = "anatole"
+theme = "hugo-lithium"
 canonifyurls = true
 relativeurls = true
 googleAnalytics = ""
@@ -16,26 +16,28 @@ footnotereturnlinkcontents = "↩"
     email = "qubinhan@gmail.com"
     footer = "&copy; [Weibin Qu](https://weibinqu.xyz) 2016-2024 | [Github](https://github.com/weibinfighting)"
     # options for highlight.js (version, additional languages, and theme)
-    customJS = ["js/external-link.js", "js/center-img.js", "js/right-quote.js", "js/no-highlight.js", "js/fix-footnote.js", "js/math-code.js"]
+    # customJS = ["js/external-link.js", "js/center-img.js", "js/right-quote.js", "js/no-highlight.js", "js/fix-footnote.js", "js/math-code.js"]
     highlightjsVersion = "9.12.0"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml","tex"]
+    highlightjsCDN = "//cdnjs.cloudflare.com/ajax/libs"
+    highlightjsLang = ["r", "yaml"]
     highlightjsTheme = "github"
 
-    MathJaxCDN = "//cdn.bootcss.com"
-    MathJaxVersion = "2.7.1"
-
-[author]
-      en = "Weibin Qu"
-      cn = "瞿伟斌"
+    MathJaxCDN = "//cdnjs.cloudflare.com/ajax/libs"
+    MathJaxVersion = "2.7.5"
+    fullWidthTheme = false
+    centerTheme = false
+    [params.logo]
+    url = "favicon.ico.png"
+    width = 50
+    height = 50
+    alt = "Logo"
 
 [permalinks]
-  cn = "/cn/:year/:month/:slug/"
-  en = "/en/:year/:month/:slug/"
-
+    post = "/:year/:month/:day/:slug/"
+    
 [[menu.main]]
-    name = "Home"
-    url = "/"
+    name = "About"
+    url = "/about/"
     weight = 1
 [[menu.main]]
     name = "Blog"
@@ -43,46 +45,18 @@ footnotereturnlinkcontents = "↩"
     weight = 2
 [[menu.main]]
     name = "关于"
-    url = "/cn/about/"
+    url = "/cn-about/"
     weight = 3
 [[menu.main]]
     name = "博客"
     url = "/cn/"
     weight = 4
-[[menu.en]]
-    name = "Home"
-    url = "/"
-    weight = 1
-[[menu.en]]
-    name = "About"
-    url = "/en/about/"
-    weight = 2
 [[menu.main]] 
     name = "Blog"
     url = "/en-about"
-    weight = 3
-[[menu.main]]
-    name = "中文"
-    url = "/cn/"
-    weight = 4
-[[menu.cn]]
-    name = "首页"
-    url = "/cn/about/"
-    weight = 1
-[[menu.cn]]
-    name = "关于"
-    url = "/cn/about/"
-    weight = 2
-[[menu.cn]]
-    name = "博客"
-    url = "/cn/"
-    weight = 3
-[[menu.cn]]
-    name = "English"
-    url = "/en-about"
-    weight = 4
+    weight = 5
 
 
-[blackfriday]
-    extensionsmask = ["noIntraEmphasis"]
-    fractions = false
+#[blackfriday]
+#    extensionsmask = ["noIntraEmphasis"]
+#    fractions = false
