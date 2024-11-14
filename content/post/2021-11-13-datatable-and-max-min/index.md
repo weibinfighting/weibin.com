@@ -4,7 +4,7 @@ author: 瞿伟斌
 date: '2024-11-13'
 slug: Rdata.table
 categories:
-  - code
+  - R
 ---
 
 工作中遇到了一个R语言的bug,暂且记录一下。
