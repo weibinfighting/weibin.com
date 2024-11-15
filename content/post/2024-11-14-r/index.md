@@ -61,8 +61,6 @@ china_map = read_sf('D:/work/map/中华人民共和国.json')
 china_populatino = rio::import('D:/work/数据资料/七普人口-省份.xlsx')
 ```
 
-
-
 ```r
 mycrs <- "+proj=aea +lat_1=25 +lat_2=47 +lon_0=105 +x_0=0 +y_0=0 +ellps=GRS80 +datum=WGS84 +units=m +no_defs" # mycrs设定为最佳Albers投影参数
 china_map|>
@@ -71,8 +69,7 @@ china_map|>
   geom_sf(aes(fill=人口))
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" />
-
+![china_map](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/unnamed-chunk-3-1.png)
 
 如果只是进行研究分析或者图像展示，这样的图像已经没有问题了，但是在日常写报告中，这样的图片实在太长了，尤其是南海诸岛及九段线。
 为此市面上常见的中国地图多会截取一部分南海诸岛和九段线，将其放在大陆的右下角，以小图的方式显示。
@@ -82,7 +79,6 @@ china_map|>
 
 那么话不多说，直接上代码：
 
-
 ```r
 # 读取数据
 prov = read_sf("D:/work/map/2023_map/2023年省级/2023年省级.shp")
@@ -91,9 +87,6 @@ provline = prov|>
 jdx = read_sf("D:/work/map/2023_map/九段线/九段线.shp")|>
 st_transform(mycrs)
 ```
-
-
-
 
 先把中国各省地图数据与九段线数据分开读取，然后将其转化为最佳投影，并将其与人口数据统一合并：
 
@@ -196,6 +189,6 @@ map = mainchina|>
 map
 ```
 
-<img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+![china_map2](https://image-home-qwb.oss-cn-shanghai.aliyuncs.com/image/unnamed-chunk-8-1.png)
 
 这样一副完美投影结合南海小地图的中国地图就生成了，对比前面的长图，不得不说这样的图在展示上确实美观许多。这里面最让人困惑的就是小地图的位置问题，不知这样的设置是否符合国家标准规范。其余堪称完美，以后就可以使用`sf`和`ggplot2`美美地画中国地图了。
